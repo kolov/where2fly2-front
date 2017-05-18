@@ -50,7 +50,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'where2fly2Front'
+      moduleName: 'wcig'
     },
 
     logLevel: 'WARN',

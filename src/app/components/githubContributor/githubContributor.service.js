@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('where2fly2Front')
+    .module('wcig')
     .factory('githubContributor', githubContributor);
 
   /** @ngInject */

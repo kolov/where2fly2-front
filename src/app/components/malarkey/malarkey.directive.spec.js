@@ -12,7 +12,7 @@
     var vm;
     var el;
 
-    beforeEach(module('where2fly2Front'));
+    beforeEach(module('wcig'));
     beforeEach(inject(function($compile, $rootScope, githubContributor, $q, _$log_) {
       $log = _$log_;
 

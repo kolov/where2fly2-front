@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('where2fly2Front')
+    .module('wcig')
     .directive('acmeMalarkey', acmeMalarkey);
 
   /** @ngInject */

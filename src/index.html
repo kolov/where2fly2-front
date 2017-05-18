@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="where2fly2Front">
+<html  >
   <head>
     <meta charset="utf-8">
     <title>where2fly2Front</title>
@@ -20,16 +20,83 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEMq1cICS6fRzX15bXVGpi0CaajZDdhlE">
+    </script>
   </head>
-  <body>
+  <body >
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <div class="navbar-xs">
+      <div class="navbar-primary">
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+                <span>
+                    <a class="navbar-brand" href="/"/>
+                </span>
+
+            <span class="navbar-brand" style="color: black">
+                   <form>
+                       <div ng-repeat="a in configuration.applications">
+                           <input name="selectedSite" type="radio" ng-model="selectedSite"
+                                  ng-value="a" ng-change="appChanged(a.href)">
+                           {{a.headline}}
+                       </div>
+                   </form>
+
+                </span>
+
+
+          </div>
+
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+
+              <li class="active"><a href="/disclaimer">Disclaimer</a></li>
+              <li class="active"><a href="/about">About</a></li>
+              <li></li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </nav>
+      </div>
+    </div>
+
+
+
+    <div id="ga-script">
+      <script>
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-64485849-1', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+    </div>
+
+
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="bower/jquery-ui/themes/smoothness/jquery-ui.css">
+
 
     <!-- build:js(src) scripts/vendor.js -->
-    <!-- bower:js -->
+    <!-- bower:js -->\
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -43,6 +110,10 @@
     <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
+  <div ng-app="wcig" ng-controller="AppController">
+    <div ui-view></div>
+  </div>
+
 
   </body>
 </html>
