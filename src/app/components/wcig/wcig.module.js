@@ -16,21 +16,27 @@ var wcigModule = angular.module("wcig", [
   'smart-table',
   'ngMap']);
 
-wcigModule.config(function($stateProvider, $urlRouterProvider) {
+wcigModule.config(function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/home');
 
   $stateProvider
 
-  // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
       url: '/home',
+      controller: 'AppController',
       templateUrl: 'search-flights.html'
     })
 
-    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+    .state('disclaimer', {
+      url: '/disclaimer',
+      controller: 'AppController',
+      templateUrl: 'disclaimer.html'
+    })
+
     .state('about', {
-      url: '/home',
+      url: '/about',
+      controller: 'AppController',
       templateUrl: 'about.html'
     });
 
