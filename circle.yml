@@ -1,6 +1,6 @@
 machine:
   services:
-    - node
+    - nodejs
     - docker
   environment:
     PROJECT_NAME: iconic-setup-91510
