@@ -1,6 +1,6 @@
 machine:
   services:
-    - gulp
+    - node
     - docker
   environment:
     PROJECT_NAME: iconic-setup-91510
@@ -9,10 +9,13 @@ machine:
     APP_NAME: w2f2-fe
 
 dependencies:
-#  pre:
+  cache_directories:
+    - node_modules
+    - code/server/node_modules
+    - code/client/node_modules
+    - code/client/vendor
   override:
-    - bower install
-    - gulp build
+    - npm install -g bower gulp
 
 deployment:
   prod:
