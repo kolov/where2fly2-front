@@ -1,23 +1,22 @@
 machine:
   services:
+    - gulp
     - docker
   environment:
     PROJECT_NAME: iconic-setup-91510
     CLUSTER_NAME: cluster-1
     CLOUDSDK_COMPUTE_ZONE: europe-west1-b
-    APP_NAME: w2f2
+    APP_NAME: w2f2-fe
 
 dependencies:
 #  pre:
-
-
   override:
-    - lein bower install
-    - lein uberjar
+    - bower install
+    - gulp build
 
 deployment:
   prod:
-    branch: master
+    branch: masterXX
     commands:
       - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
       - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 150.0.0
