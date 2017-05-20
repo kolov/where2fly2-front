@@ -1,6 +1,5 @@
 machine:
   services:
-    - nodejs
     - docker
   environment:
     PROJECT_NAME: iconic-setup-91510
@@ -15,7 +14,9 @@ dependencies:
     - code/client/node_modules
     - code/client/vendor
   override:
+    - npm install
     - npm install -g bower gulp
+    - gulp build
 
 deployment:
   prod:
