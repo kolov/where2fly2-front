@@ -24,7 +24,7 @@ wcigModule.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('home', {
       url: '/home',
-      controller: 'AppController',
+      controller: 'FlightsController',
       templateUrl: 'pages/search-flights.html'
     })
 
