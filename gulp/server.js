@@ -47,7 +47,7 @@ function browserSyncInit(baseDir, browser) {
 }
 
 browserSync.use(browserSyncSpa({
-  selector: '[ng-app]'// Only needed for angular apps
+  selector: '[wcig-app]'// Only needed for angular apps
 }));
 
 gulp.task('serve', ['watch'], function () {

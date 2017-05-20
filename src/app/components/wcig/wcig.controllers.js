@@ -185,7 +185,7 @@ wcigModule.controller("AppController", function ($scope, $log, $window, $q,
     $scope.weekendsTabPresent = function () {
       return $scope.configuration &&
         $scope.configuration.periods &&
-        _.contains($scope.configuration.periods, 'weekend');
+        _.includes($scope.configuration.periods, 'weekend');
     };
 
     $scope.getDates = function () {
