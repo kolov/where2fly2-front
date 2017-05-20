@@ -10,10 +10,9 @@
     background-image: url("/static/img/clouds1.jpg");
 }
 
-body {
+.clouds {
     background-color: #f0f0f0;
-!important;
-    background-image: url("/static/img/clouds1.jpg");
+     background-image: url("/static/img/clouds1.jpg");
 }
 
 .angular-google-map-container {
