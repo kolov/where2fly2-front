@@ -25,19 +25,19 @@ wcigModule.config(function ($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       controller: 'AppController',
-      templateUrl: 'search-flights.html'
+      templateUrl: 'pages/search-flights.html'
     })
 
     .state('disclaimer', {
       url: '/disclaimer',
       controller: 'AppController',
-      templateUrl: 'disclaimer.html'
+      templateUrl: 'pages/disclaimer.html'
     })
 
     .state('about', {
       url: '/about',
       controller: 'AppController',
-      templateUrl: 'about.html'
+      templateUrl: 'pages/about.html'
     });
 
 });
