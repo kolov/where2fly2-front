@@ -204,7 +204,7 @@ div#about {
     background-color: #00d66c;
 }
 
-.navbar-primary .navbar .nav .active > a, .navbar .nav .active > a:hover {
+.navbar.nav li  > a, .navbar .nav .active > a:hover {
     color: #fff;
     background-color: #00d66c;
 }

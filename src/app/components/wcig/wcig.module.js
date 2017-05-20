@@ -25,13 +25,13 @@ wcigModule.config(function($stateProvider, $urlRouterProvider) {
   // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
       url: '/home',
-      templateUrl: 'partial-home.html'
+      templateUrl: 'search-flights.html'
     })
 
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     .state('about', {
       url: '/home',
-      templateUrl: 'partial-home.html'
+      templateUrl: 'about.html'
     });
 
 });
