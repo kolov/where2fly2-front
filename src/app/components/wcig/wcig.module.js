@@ -37,7 +37,7 @@ wcigModule.config(function ($stateProvider, $urlRouterProvider) {
     .state('about', {
       url: '/about',
       controller: 'AppController',
-      templateUrl: 'app/§pages/about.html'
+      templateUrl: 'app/pages/about.html'
     });
 
 });
