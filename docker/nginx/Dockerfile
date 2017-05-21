@@ -1,11 +1,10 @@
 FROM nginx:alpine
 
 
-WORKDIR /app
-COPY . /app
-
-EXPOSE 80
+WORKDIR /dist
+COPY . /dist
 
 USER root
 COPY nginx.conf /etc/nginx/nginx.conf
+
 
