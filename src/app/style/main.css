@@ -7,12 +7,12 @@
 }
 
 .navbar-default {
-    background-image: url("/static/img/clouds1.jpg");
+    background-image: url("/app/img/clouds1.jpg");
 }
 
 .clouds {
     background-color: #f0f0f0;
-     background-image: url("/static/img/clouds1.jpg");
+     background-image: url("/app/img/clouds1.jpg");
 }
 
 .angular-google-map-container {

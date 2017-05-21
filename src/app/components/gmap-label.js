@@ -49,7 +49,7 @@ var airportClickShape = {
 };
 
 var imageDest = {
-  url: '/static/img/beach.png',
+  url: '/app/img/beach.png',
   size: new google.maps.Size(16, 16),
   origin: new google.maps.Point(0, 0),
   anchor: new google.maps.Point(0, 0)

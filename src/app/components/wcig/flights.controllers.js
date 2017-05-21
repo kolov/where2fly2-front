@@ -1035,7 +1035,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
     if ($scope.isMobile) {
       $uibModal.open({
-        templateUrl: '/static/pages/mobile-warning.html',
+        templateUrl: 'app/pages/mobile-warning.html',
         size: 'sm',
         controller: "WarningController",
         resolve: {
@@ -1173,7 +1173,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     $scope.buy = function (destcode, it) {
       $scope.uevt({action: 'buy', 'dest': destcode, 'it-id': it.id});
       $uibModal.open({
-        templateUrl: 'pages/buy.html',
+        templateUrl: 'app/pages/buy.html',
         controller: 'DlgController',
         size: 'sm',
         resolve: {
