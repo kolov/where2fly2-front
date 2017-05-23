@@ -52,13 +52,10 @@ wcigModule.factory('airportsService', ['$resource', function ($resource) {
 }]);
 
 
-wcigModule.factory('configurationService', ['$resource', function ($resource) {
-  return $resource('/v1/config', {},
+wcigModule.factory('configurationsService', ['$resource', function ($resource) {
+  return $resource('/v1/configs', {},
     {
       'query': {
-        params: {
-          cfg: '@cfg'
-        },
         isArray: false
       }
     });

@@ -1,17 +1,17 @@
 wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
-                                                 $uibModal, $rootScope,
-                                                 destinationsService,
-                                                 itinerariesService,
-                                                 slicesService,
-                                                 weekendService,
-                                                 airportsService,
-                                                 weekendsService,
-                                                 holidaysService,
-                                                 configurationService,
-                                                 flightsService,
-                                                 inspirationService,
-                                                 evtService,
-                                                 eventsService) {
+                                                     $uibModal, $rootScope,
+                                                     destinationsService,
+                                                     itinerariesService,
+                                                     slicesService,
+                                                     weekendService,
+                                                     airportsService,
+                                                     weekendsService,
+                                                     holidaysService,
+                                                     configurationsService,
+                                                     flightsService,
+                                                     inspirationService,
+                                                     evtService,
+                                                     eventsService) {
 
 
     var WEEKEND_OUTBOUND_DAY_OF_WEEK = 5;
@@ -33,7 +33,6 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
     $scope.inspirations = [];
 
-    $scope.weekendTabActive = true;
 
     function isMobileClient() {
       var check = false;
@@ -143,16 +142,15 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
 // get configuration
     $scope.getConfiguration = function () {
-      var cfg = location.search.split('cfg=')[1];
-      return configurationService.query({cfg: cfg}).$promise.then(function (data) {
-        $scope.configuration = data;
-        $scope.selectedSite = _.chain($scope.configuration.applications)
-          .filter(function (a) {
-            return a.selected;
-          })
-          .first()
-          .value();
-      });
+      return configurationsService.query().$promise
+        .then(function (data) {
+          $scope.configurations = data;
+          $scope.configuration = data['transavia'];
+          $scope.weekendsTabPresent = _.includes($scope.configuration.periods, 'weekend');
+          $scope.activePeriodTab = $scope.weekendsTabPresent ? 'weekend' : 'holiday';
+
+          updateConfig($scope.activePeriodTab)
+        });
     };
 
 // get origin and destination airports
@@ -183,12 +181,6 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
       return $q.all(promises);
     };
 
-
-    $scope.weekendsTabPresent = function () {
-      return $scope.configuration &&
-        $scope.configuration.periods &&
-        _.includes($scope.configuration.periods, 'weekend');
-    };
 
     $scope.getDates = function () {
       var promises = [];
@@ -1018,10 +1010,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     $scope.fetchInitialData = function () {
       $scope.getConfiguration()
         .then($scope.getDates)
-        .then(function () {
-          updateConfig($scope.configuration.periods[0]);
-        })
-        // .then($scope.weekendsTabSelected)
+
         .then($scope.getAirports)
         .then($scope.updateOriginsAndDestinations)
 
@@ -1246,11 +1235,13 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
 
     $scope.weekendsTabSelected = function () {
+      $scope.activePeriodTab = 'weekend';
       updateConfig('weekend');
     };
 
 
     $scope.holidaysTabSelected = function () {
+      $scope.activePeriodTab = 'holiday';
       updateConfig('holiday');
       $scope.holidaySelectionChanged(0);
     };
