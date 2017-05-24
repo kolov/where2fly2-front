@@ -147,9 +147,9 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
           $scope.configurations = data;
           $scope.configuration = data['transavia'];
           $scope.weekendsTabPresent = _.includes($scope.configuration.periods, 'weekend');
-          $scope.activePeriodTab = $scope.weekendsTabPresent ? 'weekend' : 'holiday';
+          $scope.activePeriodTab = 0;
 
-          updateConfig($scope.activePeriodTab)
+          updateConfig($scope.weekendsTabPresent ? 'weekend' : 'holiday')
         });
     };
 
@@ -1235,13 +1235,13 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
 
     $scope.weekendsTabSelected = function () {
-      $scope.activePeriodTab = 'weekend';
+     // $scope.activePeriodTab = 'weekend';
       updateConfig('weekend');
     };
 
 
     $scope.holidaysTabSelected = function () {
-      $scope.activePeriodTab = 'holiday';
+  //    $scope.activePeriodTab = 'holiday';
       updateConfig('holiday');
       $scope.holidaySelectionChanged(0);
     };

@@ -35,9 +35,9 @@
 
 
                         <div class="row">
-                            <uib-tabset >
-                                <uib-tab heading="Weekends" select="weekendsTabSelected()" index="weekend">
-                                    <div ng-if="activePeriodTab == 'weekend'">
+                            <uib-tabset active="activePeriodTab">
+                                <uib-tab heading="Weekends" select="weekendsTabSelected()"  >
+                                    <div  >
                                         <div class="row">
                                             <div class="col-xs-7">
                                                 Flight dates (Fri - Sun)
@@ -57,8 +57,8 @@
                                         </div>
                                     </div>
                                 </uib-tab>
-                                <uib-tab heading="School Holidays" select="holidaysTabSelected()" index="holiday">
-                                    <div ng-if="activePeriodTab == 'holiday'">
+                                <uib-tab heading="School Holidays" select="holidaysTabSelected()"  >
+                                    <div >
                                         <div class="row">
                                             <div class="col-xs-7">
                                                 Flight dates

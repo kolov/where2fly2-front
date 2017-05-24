@@ -6,6 +6,7 @@ underscore.factory('_', function () {
 
 var wcigModule = angular.module("wcig", [
   'ngResource',
+  'ui.bootstrap.tabs',
   'ui.bootstrap',
   'ui.router',
   'ui.bootstrap.modal',
@@ -13,7 +14,6 @@ var wcigModule = angular.module("wcig", [
   'angularLoad',
   'underscore',
   'ui.slider',
-  'smart-table',
   'ngMap']);
 
 wcigModule.config(function ($stateProvider, $urlRouterProvider) {
