@@ -140,16 +140,27 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     };
 
 
+    function selectFlightsScope(s) {
+      if ($scope.configurations) {
+        $scope.configuration = $scope.configurations[s];
+        $scope.weekendsTabPresent = _.includes($scope.configuration.periods, 'weekend');
+        updateConfig($scope.weekendsTabPresent ? 'weekend' : 'holiday');
+
+        $scope.getDates()
+          .then($scope.getAirports)
+          .then($scope.updateOriginsAndDestinations)
+          .then($scope.fetchItinerariesSelectedDates)
+          .then($scope.updateMinPrices)
+          .then($scope.updateInspirations);
+      }
+    }
+
 // get configuration
     $scope.getConfiguration = function () {
       return configurationsService.query().$promise
         .then(function (data) {
           $scope.configurations = data;
-          $scope.configuration = data['transavia'];
-          $scope.weekendsTabPresent = _.includes($scope.configuration.periods, 'weekend');
-          $scope.activePeriodTab = $scope.weekendsTabPresent? 'weekend' : 'holiday';
-
-          updateConfig($scope.activePeriodTab)
+          selectFlightsScope('transavia');
         });
     };
 
@@ -1010,10 +1021,8 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     $scope.fetchInitialData = function () {
       $scope.getConfiguration()
         .then($scope.getDates)
-
         .then($scope.getAirports)
         .then($scope.updateOriginsAndDestinations)
-
         .then($scope.fetchItinerariesSelectedDates)
         .then($scope.updateMinPrices)
         .then($scope.updateInspirations);
@@ -1233,6 +1242,14 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
         }).length == 0;
     };
 
+
+    $scope.transaviaScopeSelected = function () {
+      selectFlightsScope('transavia')
+    };
+
+    $scope.worldScopeSelected = function () {
+      selectFlightsScope('holidays')
+    };
 
     $scope.weekendsTabSelected = function () {
       updateConfig('weekend');

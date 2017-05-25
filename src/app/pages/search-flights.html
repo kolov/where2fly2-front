@@ -13,11 +13,14 @@
             </alert>
 
             <div id="page-content">
-
-
                 <div class="row">
                     <div class="col-xs-3">
-
+                        <uib-tabset type="pills">
+                            <uib-tab heading="Transavia" select="transaviaScopeSelected()">
+                            </uib-tab>
+                            <uib-tab heading="World" select="worldScopeSelected()">
+                            </uib-tab>
+                        </uib-tabset>
                         <div class="row">
                             Origin:
                         </div>
@@ -35,9 +38,9 @@
 
 
                         <div class="row">
-                            <uib-tabset active="activePeriodTab">
-                                <uib-tab heading="Weekends" select="weekendsTabSelected()"  index="'weekend'">
-                                    <div  >
+                            <uib-tabset active="period">
+                                <uib-tab heading="Weekends" select="weekendsTabSelected()" index="'weekend'">
+                                    <div>
                                         <div class="row">
                                             <div class="col-xs-7">
                                                 Flight dates (Fri - Sun)
@@ -57,8 +60,8 @@
                                         </div>
                                     </div>
                                 </uib-tab>
-                                <uib-tab heading="School Holidays" select="holidaysTabSelected()" index="'holiday'" >
-                                    <div >
+                                <uib-tab heading="School Holidays" select="holidaysTabSelected()" index="'holiday'">
+                                    <div>
                                         <div class="row">
                                             <div class="col-xs-7">
                                                 Flight dates
