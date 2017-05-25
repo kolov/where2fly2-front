@@ -779,25 +779,27 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     function createTableRows(itineraries) {
       var result = [];
       _.each(itineraries, function (it) {
-        result.push({
-          isSummary: true,
-          group: it.group,
-          price: it.price,
-          outDepartureDateTime: it.outDepartureDateTime,
-          outArrivalDateTime: it.outArrivalDateTime,
-          outDuration: it.outDuration,
-          inDepartureDateTime: it.inDepartureDateTime,
-          inArrivalDateTime: it.inArrivalDateTime,
-          inDuration: it.inDuration,
-          slice: it.slices,
-          origin: it.slices[0][0].origin,
-          destination: it.slices[1][0].origin
-        })
-        ;
-        result.push({
-          isSummary: false,
-          slice: it.slices
-        });
+        if( it.slices) {
+          result.push({
+            isSummary: true,
+            group: it.group,
+            price: it.price,
+            outDepartureDateTime: it.outDepartureDateTime,
+            outArrivalDateTime: it.outArrivalDateTime,
+            outDuration: it.outDuration,
+            inDepartureDateTime: it.inDepartureDateTime,
+            inArrivalDateTime: it.inArrivalDateTime,
+            inDuration: it.inDuration,
+            slice: it.slices,
+            origin: it.slices[0][0].origin,
+            destination: it.slices[1][0].origin
+          })
+          ;
+          result.push({
+            isSummary: false,
+            slice: it.slices
+          });
+        }
       });
       return result;
 
