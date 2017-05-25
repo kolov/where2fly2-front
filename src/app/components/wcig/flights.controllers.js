@@ -198,6 +198,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
       // query & show available dates
       var p = holidaysService.query({groups: $scope.configuration.groups}).$promise;
       p.then(function (data) {
+        $scope.holidays = [];
         _.each(data, function (d) {
           var ix = 1;
           $scope.holidays.push(
@@ -219,6 +220,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
       var p = weekendsService.query({origins: 'AMS'}).$promise;
       p.then(function (data) {
+          $scope.availableWeekends = [];
           var ix = 1;
           _.each(data, function (d) {
             $scope.availableWeekends.push(
@@ -375,11 +377,13 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
 
     $scope.fetchTransaviaP = function (origin, outboundDate, inboundDate, around) {
 
-      $log.debug('fetchTransavia called');
       var promises = [];
       var flightsId = 'from/' + origin + '/' + outboundDate;
-      if (!$scope.fetchedFlightIds[flightsId]) {
 
+      $log.debug('fetchTransavia called ' + flightsId);
+
+      if (!$scope.fetchedFlightIds[flightsId]) {
+        $scope.fetchedFlightIds[flightsId] = true;
         $scope.inccountOpenRequests();
 
         var p = flightsService.query({
@@ -390,7 +394,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
           around: around
         }).$promise;
         p.then(function (flights) {
-          $scope.fetchedFlightIds[flightsId] = true;
+
           if (flights.length) {
             _.each(flights, function (flightsOnDate) {
               $scope.addFlights(flightsOnDate);
@@ -409,8 +413,8 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
       }
 
       var idTo = 'to/' + origin + '/' + inboundDate;
-      if (!$scope.fetchedFlightIds[flightsId]) {
-
+      if (!$scope.fetchedFlightIds[idTo]) {
+        $scope.fetchedFlightIds[idTo] = true;
         $scope.inccountOpenRequests();
 
         var p = flightsService.query({
@@ -422,7 +426,7 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
         }).$promise;
         p.then(function (flights) {
           $log.debug('fetchTransavia response');
-          $scope.fetchedFlightIds[idTo] = true;
+
           if (flights.length) {
             _.each(flights, function (flightsOnDate) {
               $scope.addFlights(flightsOnDate);
