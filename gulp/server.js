@@ -35,7 +35,7 @@ function browserSyncInit(baseDir, browser) {
    */
   server.middleware = proxyMiddleware('/v1',
     {
-      target: 'http://where2fly2.com',
+      target: 'http://service.where2fly2.com',
       changeOrigin: true
     });
 
