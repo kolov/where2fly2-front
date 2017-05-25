@@ -39,7 +39,8 @@
 
                         <div class="row">
                             <uib-tabset active="period">
-                                <uib-tab heading="Weekends" select="weekendsTabSelected()" index="'weekend'">
+                                <uib-tab heading="Weekends" select="weekendsTabSelected()" index="'weekend'"
+                                         ng-if="weekendsTabPresent">
                                     <div>
                                         <div class="row">
                                             <div class="col-xs-7">
