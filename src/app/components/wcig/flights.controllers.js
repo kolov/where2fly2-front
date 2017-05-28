@@ -1056,22 +1056,22 @@ wcigModule.controller("FlightsController", function ($scope, $log, $window, $q,
     $scope.outboundStartTime = function () {
       return $scope.period == WEEKEND
         ? dayOfWeekFrom(WEEKEND_OUTBOUND_DAY_OF_WEEK, $scope.outboundRange[0])
-        : dateFrom($scope.selectedHoliday.out, $scope.outboundRange[0]);
+        : dateWeekDayFrom($scope.selectedHoliday.out, $scope.outboundRange[0]);
     };
     $scope.outboundEndTime = function () {
       return $scope.period == WEEKEND
         ? dayOfWeekFrom(WEEKEND_OUTBOUND_DAY_OF_WEEK, $scope.outboundRange[1])
-        : dateFrom($scope.selectedHoliday.out, $scope.outboundRange[1]);
+        : dateWeekDayFrom($scope.selectedHoliday.out, $scope.outboundRange[1]);
     };
     $scope.inboundStartTime = function () {
       return $scope.period == WEEKEND
         ? dayOfWeekFrom(WEEKEND_INBOUND_DAY_OF_WEEK, $scope.inboundRange[0])
-        : dateFrom($scope.selectedHoliday.in, $scope.inboundRange[0]);
+        : dateWeekDayFrom($scope.selectedHoliday.in, $scope.inboundRange[0]);
     };
     $scope.inboundEndTime = function () {
       return $scope.period == WEEKEND
         ? dayOfWeekFrom(WEEKEND_INBOUND_DAY_OF_WEEK, $scope.inboundRange[1])
-        : dateFrom($scope.selectedHoliday.in, $scope.inboundRange[1]);
+        : dateWeekDayFrom($scope.selectedHoliday.in, $scope.inboundRange[1]);
     };
 
     $scope.outDepartureTimeSlider = {

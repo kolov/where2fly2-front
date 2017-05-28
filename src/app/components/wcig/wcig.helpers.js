@@ -15,6 +15,11 @@ function dayOfWeekFrom(startDay, offsetInHours) {
 function dateFrom(dt, offsetInHours) {
   return moment.utc(dt).add( offsetInHours, 'hour').format('DD-MMM HH:mm');
 }
+
+function dateWeekDayFrom(dt, offsetInHours) {
+  return moment.utc(dt).add( offsetInHours, 'hour').format('ddd DD/MM HH:mm');
+}
+
 function timeBetween(flightTime, day, range) {
   return flightTime.isAfter(moment.utc(day).add(range[0], 'hours'))
     && flightTime.isBefore(moment.utc(day).add(range[1], 'hours'));
