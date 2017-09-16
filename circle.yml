@@ -4,6 +4,8 @@ machine:
   environment:
     APP_NAME: w2f2-fe
     BUILD_TARGET_DIR: dist
+        K8S_DEPLOYMENT: k8s/k8s-deployment.yml
+        K8S_SERVICE: k8s/k8s-service.yml
 dependencies:
   cache_directories:
     - node_modules
